@@ -1,12 +1,15 @@
 #pragma once
+
+#include "Position.h"
+
 class Organism
 {
 private:
     
     
 protected:
-    int x_;
-    int y_;
+
+	Position position_;
     int age_;
     int priority_;
     int attack_points_;
@@ -17,13 +20,13 @@ protected:
 public:
 
     Organism() = delete;
-    Organism(const int age, const int priority, const int attack_points, const int x, const int y);
+    Organism(const int age, const int priority, const int attack_points, Position position);
     virtual ~Organism() = 0;
 
     Organism(Organism& organism) = delete;
     Organism(Organism&& organism) = delete;
     Organism& operator=(const Organism& r_organism) = delete;
-    Organism&& operator=(const Organism&& r_organism) = delete;
+    Organism& operator=(const Organism&& r_organism) = delete;
 
     
     virtual void Action() = 0;
@@ -36,8 +39,8 @@ inline void Organism::SetAsDead()
     is_dead_ = true;
 }
 
-inline Organism::Organism(const int age, const int priority, const int attack_points,const int x, const int y): age_(age), priority_(priority),
-                                                                          attack_points_(attack_points), x_(x), y_(y)
+inline Organism::Organism(const int age, const int priority, const int attack_points,const Position position): position_(position), age_(age), priority_(priority),
+                                                                          attack_points_(attack_points)
 {
 }
 

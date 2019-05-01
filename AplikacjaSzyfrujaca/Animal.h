@@ -18,7 +18,7 @@ public:
     Animal(const Animal& animal) = delete;
     Animal(const Animal&& animal) = delete;
     Animal& operator=(const Animal& r_animal) = delete;
-    Animal&& operator=(const Animal&& r_animal) = delete;
+	Animal& operator=(const Animal&& r_animal) = delete;
 
 
     virtual void Action() override;
